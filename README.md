@@ -24,13 +24,6 @@ HI-04 asks for an ML model that evaluates creditworthiness for rural and gig wor
 5. **Recourse.** A bounded search over actionable habits only (on-time bill rate, bill streak, recharge regularity, savings-like balance) finds the smallest realistic change that moves an applicant up a band.
 6. **Fairness.** Selection rate, true-positive rate and false-positive rate by gender, region and occupation. A Fairlearn ExponentiatedGradient mitigation is compared with the unmitigated model, and a proxy-feature ablation retrains without two proxy-like features.
 
-## Screenshots
-
-![Applicant score and explanation](screenshots/01-applicant.png)
-![Recourse plan](screenshots/02-recourse.png)
-![Lender view](screenshots/03-lender.png)
-![Fairness audit](screenshots/04-fairness.png)
-
 ## Demo walkthrough
 
 - **Applicant:** behavioural sliders, score gauge, suggested tier, plain-language SHAP reasons and a "How to improve" plan.
