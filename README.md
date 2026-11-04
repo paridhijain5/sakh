@@ -3,6 +3,8 @@
 **Team:** Vanta · **Participant:** Paridhi Jain (solo) · **Hackathon:** Neural Storm 2026  
 **Tagline:** *A clearer path to credit, built from everyday financial habits—not a formal credit file.*
 
+**Live demo:** LIVE_URL_HERE · **Repo:** REPO_URL_HERE
+
 > **All applicant data and labels in this repository are synthetic. Sakh is a decision-support prototype, not a real lending decision.** Do not use its scores to approve, price, or deny real credit.
 
 ## Problem and approach
@@ -50,6 +52,8 @@ These captured results came from the available local Python 3.14 environment (XG
 | Calibrated logistic regression | 0.922 | 0.930 | 0.908 | 0.953 | 0.889 |
 | Calibrated XGBoost | 0.920 | 0.927 | 0.907 | 0.947 | 0.884 |
 
+The two models perform almost identically on this synthetic data. I kept XGBoost as the selected model because it can capture non-linear behaviour patterns and works with SHAP's tree explainer; the logistic-regression baseline shows the data is largely linearly separable.
+
 After running the training command, the exact values are recorded in [`models/metrics.json`](models/metrics.json). Score mapping: `round(300 + 600 × calibrated repayment probability)`. Illustrative suggested maximums: 600–699 → ₹15,000; 700–799 → ₹30,000; 800–900 → ₹50,000; below 600 → no suggested amount.
 
 ## Fairness results
@@ -70,6 +74,8 @@ The proxy-feature ablation reduced held-out accuracy from 0.884 to 0.874 and AUC
 
 ## Streamlit demo
 
+The interface is styled like a bahi-khata, the red cloth ledger Indian shopkeepers use to record trust and credit.
+
 - **Applicant:** behavioural sliders, score gauge, suggested tier, local feature explanation, and bounded “How to improve” recourse.
 - **Lender view:** a filterable sample of synthetic test applicants with score, suggested tier, and top local signal.
 - **Fairness:** group-level approval/error-rate charts before and after mitigation, plus an opt-in proxy-feature ablation.
@@ -77,7 +83,7 @@ The proxy-feature ablation reduced held-out accuracy from 0.884 to 0.874 and AUC
 
 The recourse engine changes only utility on-time rate, on-time streak, recharge regularity, and savings-like balance. It never changes gender, region, or occupation. Suggested actions are model estimates, not guaranteed eligibility.
 
-## Screenshots to capture (exactly four)
+## Screenshots
 
 1. **Applicant score and explanation:** the score gauge, suggested loan tier, and SHAP feature chart.
 2. **Recourse plan:** an applicant below the next tier with the “How to improve” message visible.
@@ -86,16 +92,24 @@ The recourse engine changes only utility on-time rate, on-time streak, recharge 
 
 Place the captures at `screenshots/01-applicant.png`, `screenshots/02-recourse.png`, `screenshots/03-lender.png`, and `screenshots/04-fairness.png` before submission.
 
+![Applicant score and explanation](screenshots/01-applicant.png)
+![Recourse plan](screenshots/02-recourse.png)
+![Lender view](screenshots/03-lender.png)
+![Fairness audit](screenshots/04-fairness.png)
+
 ## Deploy to a public GitHub repository and Streamlit Community Cloud
 
 1. Sign in to GitHub and create a **public, empty** repository named `sakh` (do not initialize it with a README or license).
-2. From this project folder, initialize and push the project. On the new repository page, copy its HTTPS clone URL to the clipboard, then run:
+2. On the new repository page, copy its HTTPS clone URL to the clipboard, then run:
+
+   Run these from the folder that contains app.py.
 
    ```powershell
    git init -b main
-   git add app.py src data models README.md requirements.txt .gitignore
+   git add app.py src data models .streamlit screenshots README.md requirements.txt .gitignore
    git commit -m "Build Sakh synthetic credit scoring demo"
-   git remote add origin (Get-Clipboard -Raw)
+   $url = (Get-Clipboard).Trim()
+   git remote add origin $url
    git push -u origin main
    ```
 
@@ -117,7 +131,7 @@ Place the captures at `screenshots/01-applicant.png`, `screenshots/02-recourse.p
 
 ## AI tools used
 
-Claude (Anthropic) was used for code assistance and planning as part of the project. Copilot SDK in VS Code also assisted with the implementation and validation completed in this session. Generated code and model outputs were reviewed and tested; the data and reported metrics are synthetic.
+Claude (Anthropic) was used for planning and code assistance, and GitHub Copilot (agent mode in VS Code) helped implement and test the project. I reviewed and ran all generated code; the data and reported metrics are synthetic.
 
 ## Submission quick answers
 
@@ -127,6 +141,8 @@ Claude (Anthropic) was used for code assistance and planning as part of the proj
 ## Devpost Project Story
 
 ### Inspiration
+
+A bahi-khata is the red cloth ledger Indian shopkeepers use to record who paid, who owes and who can be trusted. For gig workers and farmers with no bank history, that kind of trust is real, but no credit bureau can see it.
 
 I wanted to explore a practical version of the question behind HI-04: what if a person has a steady work life and pays everyday bills reliably, but has never had a formal credit file? I called the prototype Sakh because the word can mean credit, reputation, and standing. I focused on everyday behaviours people can recognize rather than making the score a black box.
 
