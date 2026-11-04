@@ -1,0 +1,164 @@
+{
+  "method": "Fairlearn ExponentiatedGradient with demographic-parity constraint (eps=0.02)",
+  "test_rows": 1000,
+  "by_attribute": {
+    "gender": {
+      "before": {
+        "by_group": {
+          "Female": {
+            "selection_rate": 0.7791044776119403,
+            "true_positive_rate": 0.9537815126050421,
+            "false_positive_rate": 0.35051546391752575
+          },
+          "Male": {
+            "selection_rate": 0.8210526315789474,
+            "true_positive_rate": 0.9439252336448598,
+            "false_positive_rate": 0.3153846153846154
+          }
+        },
+        "demographic_parity_difference": 0.04194815396700702,
+        "equalized_odds_difference": 0.035130848532910375,
+        "accuracy": 0.884
+      },
+      "after": {
+        "by_group": {
+          "Female": {
+            "selection_rate": 0.7850746268656716,
+            "true_positive_rate": 0.9621848739495799,
+            "false_positive_rate": 0.35051546391752575
+          },
+          "Male": {
+            "selection_rate": 0.8285714285714286,
+            "true_positive_rate": 0.9514018691588785,
+            "false_positive_rate": 0.3230769230769231
+          }
+        },
+        "demographic_parity_difference": 0.04349680170575698,
+        "equalized_odds_difference": 0.027438540840602654,
+        "accuracy": 0.889
+      }
+    },
+    "region": {
+      "before": {
+        "by_group": {
+          "Rural": {
+            "selection_rate": 0.7611111111111111,
+            "true_positive_rate": 0.9409448818897638,
+            "false_positive_rate": 0.330188679245283
+          },
+          "Semi-urban": {
+            "selection_rate": 0.8049645390070922,
+            "true_positive_rate": 0.9454545454545454,
+            "false_positive_rate": 0.3064516129032258
+          },
+          "Urban": {
+            "selection_rate": 0.8547486033519553,
+            "true_positive_rate": 0.9531772575250836,
+            "false_positive_rate": 0.3559322033898305
+          }
+        },
+        "demographic_parity_difference": 0.09363749224084428,
+        "equalized_odds_difference": 0.04948059048660469,
+        "accuracy": 0.884
+      },
+      "after": {
+        "by_group": {
+          "Rural": {
+            "selection_rate": 0.7972222222222223,
+            "true_positive_rate": 0.9566929133858267,
+            "false_positive_rate": 0.41509433962264153
+          },
+          "Semi-urban": {
+            "selection_rate": 0.8226950354609929,
+            "true_positive_rate": 0.9590909090909091,
+            "false_positive_rate": 0.3387096774193548
+          },
+          "Urban": {
+            "selection_rate": 0.8128491620111732,
+            "true_positive_rate": 0.9130434782608695,
+            "false_positive_rate": 0.3050847457627119
+          }
+        },
+        "demographic_parity_difference": 0.025472813238770597,
+        "equalized_odds_difference": 0.11000959385992964,
+        "accuracy": 0.871
+      }
+    },
+    "occupation": {
+      "before": {
+        "by_group": {
+          "Delivery partner": {
+            "selection_rate": 0.8571428571428571,
+            "true_positive_rate": 0.965034965034965,
+            "false_positive_rate": 0.375
+          },
+          "Domestic/informal worker": {
+            "selection_rate": 0.8287671232876712,
+            "true_positive_rate": 0.9636363636363636,
+            "false_positive_rate": 0.4166666666666667
+          },
+          "Farmer": {
+            "selection_rate": 0.7298578199052133,
+            "true_positive_rate": 0.9148936170212766,
+            "false_positive_rate": 0.35714285714285715
+          },
+          "Gig driver": {
+            "selection_rate": 0.8620689655172413,
+            "true_positive_rate": 0.967479674796748,
+            "false_positive_rate": 0.2727272727272727
+          },
+          "Small shop owner": {
+            "selection_rate": 0.8733333333333333,
+            "true_positive_rate": 0.976,
+            "false_positive_rate": 0.36
+          },
+          "Street vendor": {
+            "selection_rate": 0.7283236994219653,
+            "true_positive_rate": 0.9007633587786259,
+            "false_positive_rate": 0.19047619047619047
+          }
+        },
+        "demographic_parity_difference": 0.145009633911368,
+        "equalized_odds_difference": 0.22619047619047622,
+        "accuracy": 0.884
+      },
+      "after": {
+        "by_group": {
+          "Delivery partner": {
+            "selection_rate": 0.8285714285714286,
+            "true_positive_rate": 0.916083916083916,
+            "false_positive_rate": 0.4375
+          },
+          "Domestic/informal worker": {
+            "selection_rate": 0.7876712328767124,
+            "true_positive_rate": 0.9090909090909091,
+            "false_positive_rate": 0.4166666666666667
+          },
+          "Farmer": {
+            "selection_rate": 0.8388625592417062,
+            "true_positive_rate": 0.9645390070921985,
+            "false_positive_rate": 0.5857142857142857
+          },
+          "Gig driver": {
+            "selection_rate": 0.8275862068965517,
+            "true_positive_rate": 0.943089430894309,
+            "false_positive_rate": 0.18181818181818182
+          },
+          "Small shop owner": {
+            "selection_rate": 0.8466666666666667,
+            "true_positive_rate": 0.944,
+            "false_positive_rate": 0.36
+          },
+          "Street vendor": {
+            "selection_rate": 0.8092485549132948,
+            "true_positive_rate": 0.916030534351145,
+            "false_positive_rate": 0.47619047619047616
+          }
+        },
+        "demographic_parity_difference": 0.05899543378995431,
+        "equalized_odds_difference": 0.4038961038961039,
+        "accuracy": 0.845
+      }
+    }
+  }
+}

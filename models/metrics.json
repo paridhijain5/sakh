@@ -1,0 +1,70 @@
+{
+  "dataset": "Synthetic only",
+  "rows": 5000,
+  "repayment_rate": 0.7732,
+  "test_rows": 1000,
+  "features": [
+    "bill_on_time_rate",
+    "bill_streak_months",
+    "recharge_regularity",
+    "avg_recharge_amount",
+    "upi_inflow_avg",
+    "upi_inflow_cv",
+    "income_volatility",
+    "seasonal_swing",
+    "active_months",
+    "min_balance_ratio",
+    "informal_loan_burden"
+  ],
+  "demographics_used_as_features": false,
+  "models": {
+    "Logistic regression (calibrated)": {
+      "auc": 0.9221979700349346,
+      "f1": 0.929968454258675,
+      "precision": 0.9076354679802956,
+      "recall": 0.9534282018111255,
+      "accuracy": 0.889
+    },
+    "XGBoost (calibrated)": {
+      "auc": 0.9197360247562274,
+      "f1": 0.9265822784810127,
+      "precision": 0.9070631970260223,
+      "recall": 0.9469598965071151,
+      "accuracy": 0.884
+    }
+  },
+  "selected_model": "XGBoost",
+  "score_formula": "round(300 + 600 * calibrated_repayment_probability)",
+  "score_bands": [
+    {
+      "name": "Build a track record",
+      "min_score": 300,
+      "max_score": 499,
+      "loan_inr": 0
+    },
+    {
+      "name": "Near eligibility",
+      "min_score": 500,
+      "max_score": 599,
+      "loan_inr": 0
+    },
+    {
+      "name": "Starter",
+      "min_score": 600,
+      "max_score": 699,
+      "loan_inr": 15000
+    },
+    {
+      "name": "Growth",
+      "min_score": 700,
+      "max_score": 799,
+      "loan_inr": 30000
+    },
+    {
+      "name": "Strong",
+      "min_score": 800,
+      "max_score": 900,
+      "loan_inr": 50000
+    }
+  ]
+}
